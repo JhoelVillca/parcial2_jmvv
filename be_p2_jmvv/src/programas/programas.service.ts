@@ -11,7 +11,7 @@ export class ProgramasService {
 
   async create(createProgramaDto: CreateProgramaDto): Promise<Programa> {
     let programa = await this.programasRepository.findOneBy({
-      nombre: createProgramaDto.nombre.trim(),
+      nombre: createProgramaDto.nombre?.trim(),
       idNivelAcademico: createProgramaDto.idNivelAcademico,
     });
     if (programa) throw new ConflictException('El programa ya existe para este nivel académico');

@@ -4,42 +4,45 @@ import { NivelAcademico } from '../../niveles-academicos/entities/nivel-academic
 @Entity('programas')
 export class Programa {
   @PrimaryGeneratedColumn({ name: 'id' })
-  id: number;
+  id: number | undefined;
 
   @Column({ name: 'id_nivel_academico', type: 'integer', nullable: false })
-  idNivelAcademico: number;
+  idNivelAcademico: number | undefined;
 
   @ManyToOne(() => NivelAcademico, (nivel) => nivel.programas)
   @JoinColumn({ name: 'id_nivel_academico' })
-  nivelAcademico: NivelAcademico;
+  nivelAcademico: NivelAcademico | undefined;
 
   @Column({ name: 'nombre', type: 'varchar', length: 100, nullable: false })
-  nombre: string;
+  nombre: string | undefined;
 
   @Column({ name: 'descripcion', type: 'varchar', length: 2000, nullable: false })
-  descripcion: string;
+  descripcion: string | undefined;
 
   @Column({ name: 'version', type: 'integer', nullable: false })
-  version: number;
+  version: number | undefined;
 
   @Column({ name: 'duracion_meses', type: 'integer', nullable: false })
-  duracionMeses: number;
+  duracionMeses: number | undefined;
 
   @Column({ name: 'costo', type: 'numeric', precision: 10, scale: 2, nullable: false })
-  costo: number;
+  costo: number | undefined;
 
   @Column({ name: 'fecha_inicio', type: 'date', nullable: false })
-  fechaInicio: Date;
+  fechaInicio: Date | undefined;
 
   @Column({ name: 'estado', type: 'varchar', length: 20, nullable: false })
-  estado: string; 
+  estado: string | undefined; 
 
   @CreateDateColumn({ name: 'fecha_creacion', type: 'timestamp' })
-  fechaCreacion: Date;
+  fechaCreacion: Date | undefined;
 
   @UpdateDateColumn({ name: 'fecha_modificacion', type: 'timestamp' })
-  fechaModificacion: Date;
+  fechaModificacion: Date | undefined;
 
   @DeleteDateColumn({ name: 'fecha_eliminacion', type: 'timestamp' })
-  fechaEliminacion: Date;
+  fechaEliminacion: Date | undefined;
+
+  @Column({ name: 'modalidad', type: 'varchar', length: 20, nullable: false, default: 'presencial' })
+  modalidad: string | undefined;
 }
